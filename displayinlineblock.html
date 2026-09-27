@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prezentacja: Display CSS</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-vsc-dark-plus.min.css"
+        rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" data-manual></script>
+</head>
+
+<body>
+    <div class="main">
+        <a href="index.html" class="control-btn home-btn">
+            <span class="material-symbols-outlined">home</span> Powrót do menu
+        </a>
+
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <div class="slide active">
+            <div class="header">
+                <h1>📦 Właściwość Display w CSS</h1>
+                <h2>Jak przeglądarka układa elementy na stronie?</h2>
+            </div>
+            <div class="content center-content">
+                <p class="author-info">Przygotowała Grupa 2 czyli:</p>
+                <div class="authors-gallery">
+                    <div class="author-card">
+                        <div class="author-img-container">
+                            <img src="ja.jpg" alt="Karol Boczkowski">
+                        </div>
+                        <p class="author-name">Karol Boczkowski</p>
+                    </div>
+                    <div class="author-card">
+                        <div class="author-img-container">
+                            <img src="halama.jpg" alt="Kuba Halama">
+                        </div>
+                        <p class="author-name">Kuba Halama</p>
+                    </div>
+                    <div class="author-card">
+                        <div class="author-img-container">
+                            <img src="kubus.jpg" alt="Jakub Migdalski">
+                        </div>
+                        <p class="author-name">Jakub Migdalski</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="header">
+                <h2>Czym jest właściwość Display?</h2>
+            </div>
+            <div class="content">
+                <p>Wszystko w HTML to tak naprawdę prostokątne pudełko (tzw. <strong>Box Model</strong>). Właściwość
+                    <code class="language-css">display</code> określa, jak to pudełko ma się zachowywać w stosunku do
+                    innych na stronie.</p>
+                <ul>
+                    <li>Czy ma zająć całą linijkę dla siebie?</li>
+                    <li>Czy ma ustawić się obok innych elementów (jak tekst)?</li>
+                    <li>Czy można mu nadać konkretną szerokość i wysokość?</li>
+                </ul>
+                <p>Trzy najważniejsze, klasyczne wartości to: <strong>block</strong>, <strong>inline</strong> oraz
+                    <strong>inline-block</strong>.</p>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="header">
+                <h2>🧱 Elementy blokowe (display: block)</h2>
+            </div>
+            <div class="split-layout">
+                <div class="col-left">
+                    <p>Domyślne zachowanie m.in. dla <code class="language-html">&lt;div&gt;</code>, <code
+                            class="language-html">&lt;p&gt;</code>, <code class="language-html">&lt;h1&gt;</code>.</p>
+                    <ul>
+                        <li>Zawsze zaczynają się <strong>od nowej linii</strong>.</li>
+                        <li>Zajmują <strong>całą dostępną szerokość</strong> (100% rodzica).</li>
+                        <li>Możesz im zmieniać <code class="language-css">width</code> i <code
+                                class="language-css">height</code>.</li>
+                    </ul>
+                    <div class="code-window">
+                        <div class="code-header"><span class="dot red"></span><span class="dot yellow"></span><span
+                                class="dot green"></span></div>
+                        <pre><code class="language-css">.pudelko {
+  display: block;
+  width: 100%;
+}</code></pre>
+                    </div>
+                </div>
+                <div class="col-right">
+                    <div class="demo-box box-model-demo">
+                        <div class="demo-element d-block">Blok 1</div>
+                        <div class="demo-element d-block">Blok 2</div>
+                        <div class="demo-element d-block" style="width: 50%;">Blok 3 (width: 50%)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="header">
+                <h2>📝 Elementy liniowe (display: inline)</h2>
+            </div>
+            <div class="split-layout">
+                <div class="col-left">
+                    <p>Domyślne zachowanie m.in. dla <code class="language-html">&lt;span&gt;</code>, <code
+                            class="language-html">&lt;a&gt;</code>, <code class="language-html">&lt;strong&gt;</code>.
+                    </p>
+                    <ul>
+                        <li>Układają się <strong>jeden obok drugiego</strong> (jak słowa w zdaniu).</li>
+                        <li><strong>Kompletnie ignorują</strong> nadane <code class="language-css">width</code> i <code
+                                class="language-css">height</code>!</li>
+                        <li>Marginesy górne/dolne mogą psuć układ strony.</li>
+                    </ul>
+                    <div class="code-window">
+                        <div class="code-header"><span class="dot red"></span><span class="dot yellow"></span><span
+                                class="dot green"></span></div>
+                        <pre><code class="language-css">.slowo {
+  display: inline;
+  width: 500px;
+}</code></pre>
+                    </div>
+                </div>
+                <div class="col-right">
+                    <div class="demo-box box-model-demo">
+                        <p class="inline-demo-text">Zwykły tekst, a w nim <span class="demo-element d-inline">Element
+                                Liniowy</span> i obok <span class="demo-element d-inline">Drugi Liniowy</span>. Układają
+                            się ładnie w tekście, ale ignorują zadaną w kodzie wysokość i szerokość!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="header">
+                <h2>🤝 Złoty środek (display: inline-block)</h2>
+            </div>
+            <div class="split-layout">
+                <div class="col-left">
+                    <p>Łączy najlepsze cechy obu światów! Często używany do przycisków i menu nawigacyjnych.</p>
+                    <ul>
+                        <li>Elementy układają się <strong>obok siebie</strong> (jak inline).</li>
+                        <li>Ale... <strong>szanują</strong> nadane <code class="language-css">width</code> i <code
+                                class="language-css">height</code> (jak block)!</li>
+                    </ul>
+                    <div class="code-window">
+                        <div class="code-header"><span class="dot red"></span><span class="dot yellow"></span><span
+                                class="dot green"></span></div>
+                        <pre><code class="language-css">.karta {
+  display: inline-block;
+  width: 150px;
+  height: 200px;
+}</code></pre>
+                    </div>
+                </div>
+                <div class="col-right">
+                    <div class="demo-box box-model-demo">
+                        <div class="demo-element d-inline-block">Karta 1</div>
+                        <div class="demo-element d-inline-block">Karta 2</div>
+                        <div class="demo-element d-inline-block">Karta 3</div>
+                        <br>
+                        <p style="font-size: 1rem; margin-top: 20px;">Są obok siebie i mają określoną
+                            szerokość/wysokość!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="header">
+                <h2>👻 Znikający element (display: none)</h2>
+            </div>
+            <div class="split-layout">
+                <div class="col-left">
+                    <p>Ukrywa element na stronie tak, jakby <strong>nigdy w kodzie go nie było</strong>.</p>
+                    <ul>
+                        <li>Zwalnia miejsce na stronie (inne elementy przesuwają się na jego pozycję).</li>
+                        <li>Różni się od <code class="language-css">visibility: hidden</code>, które ukrywa element, ale
+                            zostawia po nim puste, "niewidzialne" miejsce.</li>
+                    </ul>
+                    <div class="code-window">
+                        <div class="code-header"><span class="dot red"></span><span class="dot yellow"></span><span
+                                class="dot green"></span></div>
+                        <pre><code class="language-css">.ukryty {
+  display: none;
+}</code></pre>
+                    </div>
+                </div>
+                <div class="col-right">
+                    <div class="demo-box box-model-demo">
+                        <div class="demo-element d-block">Zwykły element</div>
+                        <div class="demo-element d-block" style="display: none;">Ukryty element (none)</div>
+                        <div class="demo-element d-block" style="visibility: hidden;">Ukryty element (visibility)</div>
+                        <div class="demo-element d-block">Kolejny element pod spodem</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="header">
+                <h2>🛠️ Czas na Was! (Zadanie)</h2>
+            </div>
+            <div class="split-layout">
+                <div class="col-left" style="justify-content: flex-start;">
+                    <p>Napiszcie kod CSS dla 3 elementów, opierając się na <code class="language-css">display</code>:
+                    </p>
+                    <ol style="font-size: 1.15rem; line-height: 1.6;">
+                        <li><strong><code class="language-css">.kafelek</code></strong> – ułóżcie je <strong>obok
+                                siebie</strong> z własną szerokością.</li>
+                        <li><strong><code class="language-css">.przycisk</code></strong> – uczyńcie go dużym blokiem
+                            zajmującym <strong>nową linię</strong>.</li>
+                        <li><strong><code class="language-css">.sekret</code></strong> – ukryjcie go
+                            <strong>całkowicie</strong> bez śladu.</li>
+                    </ol>
+                    <div class="demo-box task-demo-box" style="padding: 15px; margin-top: 10px;">
+                        <h3 class="task-heading">Kod HTML:</h3>
+                        <code class="language-html">&lt;span class="kafelek"&gt;Opcja 1&lt;/span&gt;</code><br>
+                        <code class="language-html">&lt;span class="kafelek"&gt;Opcja 2&lt;/span&gt;</code><br>
+                        <code class="language-html">&lt;a href="#" class="przycisk"&gt;Zapisz się!&lt;/a&gt;</code><br>
+                        <code class="language-html">&lt;p class="sekret"&gt;Tajne hasło&lt;/p&gt;</code>
+                    </div>
+                </div>
+
+                <div class="col-right">
+                    <div class="demo-box box-model-demo" style="margin-bottom: 15px;">
+                        <h3 style="color: #0056b3; margin-bottom: 15px;">👀 Oczekiwany efekt:</h3>
+                        <div style="text-align: left;">
+                            <span class="demo-element"
+                                style="display: inline-block; width: 120px; height: 40px; text-align: center; line-height: 20px;">Opcja
+                                1</span>
+                            <span class="demo-element"
+                                style="display: inline-block; width: 120px; height: 40px; text-align: center; line-height: 20px;">Opcja
+                                2</span>
+                            <a href="#" class="demo-element"
+                                style="display: block; text-align: center; margin-top: 15px; text-decoration: none;">Zapisz
+                                się!</a>
+                            <div
+                                style="border: 1px dashed #aab7c4; padding: 10px; margin-top: 15px; color: #666; font-size: 0.9rem; text-align: center;">
+                                (Element .sekret zniknął całkowicie z układu)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="reveal-btn-container" style="margin-top: 0;">
+                        <button id="revealBtn" class="control-btn reveal-btn">
+                            <span class="material-symbols-outlined">visibility</span> Pokaż rozwiązanie
+                        </button>
+                    </div>
+
+                    <div id="solutionBox" class="code-window solution-box">
+                        <div class="code-header">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <pre><code class="language-css">.kafelek {
+  display: inline-block;
+}
+
+.przycisk {
+  display: block;
+}
+
+.sekret {
+  display: none;
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="header">
+                <h2>💡 Podsumowanie</h2>
+            </div>
+            <div class="content">
+                <table class="summary-table">
+                    <tr>
+                        <th>Właściwość</th>
+                        <th>Nowa linia?</th>
+                        <th>Reaguje na width/height?</th>
+                    </tr>
+                    <tr>
+                        <td><strong>block</strong></td>
+                        <td class="text-center">✅ Tak</td>
+                        <td class="text-center">✅ Tak</td>
+                    </tr>
+                    <tr>
+                        <td><strong>inline</strong></td>
+                        <td class="text-center">❌ Nie</td>
+                        <td class="text-center">❌ Nie</td>
+                    </tr>
+                    <tr>
+                        <td><strong>inline-block</strong></td>
+                        <td class="text-center">❌ Nie</td>
+                        <td class="text-center">✅ Tak</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="header">
+                <h1>Dziękujemy za uwagę!</h1>
+            </div>
+            <div class="content center-content">
+                <p class="outro-questions">
+                    <span class="material-symbols-outlined"
+                        style="font-size: 2rem; vertical-align: middle;">contact_support</span> Czy macie jakieś
+                    pytania?
+                </p>
+                <br>
+                <p class="outro-source">Źródło wiedzy: <strong>W3Schools / MDN Web Docs</strong></p>
+            </div>
+        </div>
+
+        <div class="slide-counter">
+            <span id="current">1</span> / <span id="total">9</span>
+        </div>
+    </div>
+
+    <div class="control">
+        <button class="control-btn" id="prevBtn">
+            <span class="material-symbols-outlined">arrow_back</span> Poprzedni
+        </button>
+        <button class="control-btn" id="nextBtn">
+            Następny <span class="material-symbols-outlined">arrow_forward</span>
+        </button>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            Prism.highlightAll();
+        });
+    </script>
+</body>
+
+</html>
